@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const { initDatabase } = require('./config/database');
+const { initDatabase, isDatabaseAvailable } = require('./config/database');
 const schoolRoutes = require('./routes/schoolRoutes');
 require('dotenv').config();
 
@@ -16,10 +16,12 @@ app.get('/', (req, res) => {
     success: true,
     message: 'School Management API is running',
     version: '1.0.0',
+    storage: isDatabaseAvailable() ? 'MySQL Database' : 'In-Memory Storage',
     endpoints: {
       addSchool: 'POST /addSchool',
       listSchools: 'GET /listSchools'
-    }
+    },
+    note: !isDatabaseAvailable() ? 'Using in-memory storage. Set up MySQL for persistent data.' : undefined
   });
 });
 
@@ -44,8 +46,13 @@ const startServer = async () => {
   try {
     await initDatabase();
     app.listen(PORT, () => {
-      console.log(`School Management API server running on port ${PORT}`);
-      console.log(`Server URL: http://localhost:${PORT}`);
+      console.log(`🚀 School Management API server running on port ${PORT}`);
+      console.log(`📍 Server URL: http://localhost:${PORT}`);
+      console.log(`💾 Storage: ${isDatabaseAvailable() ? 'MySQL Database' : 'In-Memory Storage'}`);
+      if (!isDatabaseAvailable()) {
+        console.log(`⚠️  Note: Using in-memory storage. Data will be lost on restart.`);
+        console.log(`🔧 To use persistent storage, set up MySQL and update .env file.`);
+      }
     });
   } catch (error) {
     console.error('Failed to start server:', error);
