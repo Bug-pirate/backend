@@ -56,7 +56,7 @@ const initDatabase = async () => {
     await connection.end();
   } catch (error) {
     console.warn('Database initialization failed, using in-memory storage:', error.message);
-    console.log('💡 To use MySQL database:');
+    console.log('To use MySQL database:');
     console.log('   1. Install MySQL server');
     console.log('   2. Update .env file with correct credentials');
     console.log('   3. Restart the application');

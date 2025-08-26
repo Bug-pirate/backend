@@ -8,6 +8,6 @@ const {
 } = require('../middleware/validation');
 
 router.post('/addSchool', validateAddSchool, handleValidationErrors, addSchool);
-router.get('/listSchools', validateListSchools, handleValidationErrors, listSchools);
+router.get('/listSchools', validateListSchools, handleValidationErrors, listSchools);d
 
 module.exports = router;

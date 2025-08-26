@@ -46,12 +46,12 @@ const startServer = async () => {
   try {
     await initDatabase();
     app.listen(PORT, () => {
-      console.log(`🚀 School Management API server running on port ${PORT}`);
-      console.log(`📍 Server URL: http://localhost:${PORT}`);
-      console.log(`💾 Storage: ${isDatabaseAvailable() ? 'MySQL Database' : 'In-Memory Storage'}`);
+      console.log(`School Management API server running on port ${PORT}`);
+      console.log(`Server URL: http://localhost:${PORT}`);
+      console.log(`Storage: ${isDatabaseAvailable() ? 'MySQL Database' : 'In-Memory Storage'}`);
       if (!isDatabaseAvailable()) {
-        console.log(`⚠️  Note: Using in-memory storage. Data will be lost on restart.`);
-        console.log(`🔧 To use persistent storage, set up MySQL and update .env file.`);
+        console.log(`Note: Using in-memory storage. Data will be lost on restart.`);
+        console.log(`To use persistent storage, set up MySQL and update .env file.`);
       }
     });
   } catch (error) {
