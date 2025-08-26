@@ -1,0 +1,23 @@
+{
+  "name": "school-management-api",
+  "type": "web",
+  "env": [
+    {
+      "key": "NODE_ENV",
+      "value": "production"
+    }
+  ],
+  "build": {
+    "commands": [
+      "npm install"
+    ]
+  },
+  "run": {
+    "command": "npm start"
+  },
+  "health": {
+    "http": {
+      "path": "/"
+    }
+  }
+}

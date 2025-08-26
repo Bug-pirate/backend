@@ -1,0 +1,163 @@
+{
+  "info": {
+    "name": "School Management API",
+    "description": "Collection for testing School Management APIs with proximity-based sorting",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Delhi Public School\",\n  \"address\": \"Sector 45, Gurgaon, Haryana, India\",\n  \"latitude\": 28.4595,\n  \"longitude\": 77.0266\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add School - Ryan International",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ryan International School\",\n  \"address\": \"Sector 40, Gurgaon, Haryana, India\",\n  \"latitude\": 28.4430,\n  \"longitude\": 77.0552\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add School - DAV Public School",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"DAV Public School\",\n  \"address\": \"Sector 14, Gurgaon, Haryana, India\",\n  \"latitude\": 28.4089,\n  \"longitude\": 77.0423\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools by Proximity",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=28.4595&longitude=77.0266",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "28.4595"
+            },
+            {
+              "key": "longitude",
+              "value": "77.0266"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add School - Validation Error Example",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"address\": \"Test\",\n  \"latitude\": 95,\n  \"longitude\": 200\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addSchool",
+          "host": ["{{baseUrl}}"],
+          "path": ["addSchool"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Schools - Validation Error Example",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/listSchools?latitude=invalid&longitude=invalid",
+          "host": ["{{baseUrl}}"],
+          "path": ["listSchools"],
+          "query": [
+            {
+              "key": "latitude",
+              "value": "invalid"
+            },
+            {
+              "key": "longitude",
+              "value": "invalid"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
